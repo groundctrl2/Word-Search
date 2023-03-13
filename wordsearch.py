@@ -1,4 +1,4 @@
-def print_grid(grid):
+def print_grid(grid): #prints the word search to include column and row numbers (starting at the top left), ensuring proper spacing up to 99
     print("")
     count1=0
     string1=""
@@ -26,7 +26,7 @@ def print_grid(grid):
             new_row+="  "
         print(new_row)
     print("")
-def is_valid(grid):
+def is_valid(grid): #ensures all rows are the same length
     row_length=0
     for row in grid:
         if row_length==0:
@@ -35,7 +35,7 @@ def is_valid(grid):
             return False
     return True
 
-def get_col(grid):
+def get_col(grid): #returns a list of each column as a string
     row_length=len(grid[0])
     list=[]
     for i in range(row_length):
@@ -87,13 +87,13 @@ def get_neg_diag(grid): #gives negative diagonals left to right
         pos_diags.append(pos_diag)
     return pos_diags
 
-def backwards(list):
+def backwards(list): #takes a list of strings and returns a new list with each string made backwards
     new_list=[]
     for string in list:
         new_list.append(string[::-1])
     return new_list
 
-def check_row(grid,words):
+def check_row(grid,words): #checks each row, forwards and backwards, and prints the row of found words
     backwards_list=backwards(grid)
     for word in words:
         for row in range(len(grid)):
@@ -101,7 +101,7 @@ def check_row(grid,words):
                 print(word," is in row ",str(row+1))
             if word in backwards_list[row]:
                 print(word," is backwards in row ",str(row+1))
-def check_col(grid,words):
+def check_col(grid,words): #checks each column, forwards and backwards, and prints the column of found words
     cols=get_col(grid)
     backwards_list=backwards(cols)
     for word in words:
@@ -110,7 +110,7 @@ def check_col(grid,words):
                 print(word," is in column ",str(col+1))
             if word in backwards_list[col]:
                 print(word," is backwards in column ",str(col+1))
-def check_pos_diag(grid,words):
+def check_pos_diag(grid,words): #checks each positive diagonal, forwards and backwards, and prints the starting position of the positive diagonal the word is in. 
     pos_diag=get_pos_diag(grid)
     backwards_list=backwards(pos_diag)
     positions=[[] for _ in range(len(grid)+len(grid[0])-1)]
@@ -126,7 +126,7 @@ def check_pos_diag(grid,words):
                 print(word," is in the positive diagonal starting in position ",str(positions[positive]))
             if word in backwards_list[positive]:
                 print(word," is backwards in the positive diagonal starting in position ",str(positions[positive]))
-def check_neg_diag(grid,words):
+def check_neg_diag(grid,words): #checks each negative diagonal, forwards and backwards, and prints the starting position of the negative diagonal the word is in. 
     neg_diag=get_neg_diag(grid)
     backwards_list=backwards(neg_diag)
     positions=[[] for _ in range(len(grid)+len(grid[0])-1)]
@@ -147,7 +147,7 @@ def check_neg_diag(grid,words):
             if word in backwards_list[negative]:
                 print(word," is backwards in the negative diagonal starting in position ",str(positions[negative]))
 
-def solve_grid(grid,words):
+def solve_grid(grid,words): #user function to find all the words
     if is_valid(grid)==False:
         print("Invalid Grid")
     else:
@@ -158,9 +158,10 @@ def solve_grid(grid,words):
 
 dog_types=["COAEHBDHADTN","ELURORSUATEO","GHRXRIESCSRR","OPEPCBTHARRO","DRUINETEUFIT","LDENAAEPHFET","LNLSIGRHAIRW","UUGCTLUEUTIE","BHNHAEDRHSCI","PSHEMIEDIAOL","RHORLHAGHMLE","ECUAAUTTCGLR","TANADGRIIEIA","SDDIGROCPREC"]
 dog_types_words=["CHIHUAHUA","BULLDOG","TERRIER","COLLIE","SHEPHERD","BOXER","HOUND","BEAGLE","CORGI","ROTTWEILER","PINSCHER","DALMATIAN","SETTER","MASTIFF","DACHSHUND"]
-# print_grid(dog_types)
-# print("")
-# solve_grid(dog_types,dog_types_words)
+print_grid(dog_types)
+print("")
+solve_grid(dog_types,dog_types_words)
+print("")
 
 artists=['QUSWBMGTMILKVATSUGXEQYOD','CUAMCJOANMIROEDIAOELCNFC','DRLETTIRGAMENERWYDZWPYXI','ZEVWPIMJCAHHYCVXBTRQDOAQ','ERAALJGEORGIAOKEEFFEGUIG','QUDSRIONERETSUGUAERREIPL','KDOSLBNSNIUGUAGLUAPYZUFW','CTRIZEAIORJYGECFHJDGSGOU','OHDLPWOQCUFZOLRGMLBNTLLP','LCAYBACNHPKLACOCFTEPEMIL','LELKEIUDAUAUOGAVCBDGMEKL','ORIAYDDLYRDBNHTRUJNKTRGA','PBENCJGXCEDALERRAAEMHNWG','NLLDRJHAMEVONOLALVODANPA','OAPIBNEORTZADUPEWNAIBELH','SETNRRNENDMAAAHIDYTGLRSC','KLDSXEFELDEPNCVRCIDTGHPC','CRNKTYCURKRGINIITAJNCIXR','APAYGNIAZELMAAELNRSSACOA','JARPILUKTGVUNSZRZCRSULMM','NCBVHOIEEGQIAGOYAJIGOQYK','KXMNDAPKUHKREPPOHDRAWDEB','WMEEFREAYTBCUOGVMPUDQAVH','XXRQLFBLGOTESSITAMIRNEHW']
 artists_words=['ALBRECHTDURER','HENRIMATISSE','PETERPAULRUBENS','ANDYWARHOL','JACKSONPOLLOCK','PIERREAUGUSTERENOIR','CARAVAGGIO','JOANMIRO','PIETMONDRIAN','CLAUDEMONET','LEONARDODAVINCI','RAPHAEL','EDGARDEGAS','MARCCHAGALL','REMBRANDT','EDOUARDMANET','MICHELANGELO','RENEMAGRITTE','EDWARDHOPPER','PABLOPICASSO','SALVADORDALI','GEORGIAOKEEFFE','PAULCEZANNE','TITIAN','GOYA','PAULGAUGUIN','VINCENTVANGOGH','GUSTAVKLIMT','PAULKLEE','WASSILYKANDINSKY']
