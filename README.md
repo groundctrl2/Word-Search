@@ -1,4 +1,4 @@
-# groundctrl2.Wordsearch
+Word-Search
 Simple python word search program
 
 # Input a string for every row in the grid and a string for every needed word (two separate lists for the sets of strings)
